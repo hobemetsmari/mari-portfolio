@@ -1,0 +1,589 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+$bg: #111010;
+$surface: #191616;
+$text: #f7f1f0;
+$muted: #aaa1a1;
+$pink: #ff39b7;
+$red: #f51d26;
+$purple: #9c00a8;
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: $text;
+  background: $bg;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  padding: 28px 6vw 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 0 0 90px 90px;
+  background:
+    radial-gradient(ellipse at 12% 55%, $purple 0%, transparent 48%),
+    linear-gradient(115deg, #b90076 0%, $red 52%, #790000 100%);
+}
+
+.nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  .logo {
+    font:
+      700 30px "Space Grotesk",
+      sans-serif;
+  }
+
+  &__links {
+    display: flex;
+    gap: clamp(14px, 3vw, 38px);
+
+    a {
+      font-size: 11px;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.65;
+      }
+    }
+  }
+
+  &__contact {
+    padding: 11px 17px;
+    border-radius: 30px;
+    background: white;
+    color: #171010;
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 0;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.hero__intro {
+  .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    margin: 0;
+    font:
+      700 clamp(76px, 13vw, 170px)/0.9 "Space Grotesk",
+      sans-serif;
+    letter-spacing: -0.09em;
+
+    span {
+      color: $pink;
+    }
+  }
+
+  h2 {
+    margin-top: 18px;
+    font-size: clamp(17px, 2vw, 25px);
+    line-height: 1.2;
+  }
+}
+
+.hero__statement {
+  max-width: 330px;
+  justify-self: end;
+
+  .hero__asterisk {
+    display: block;
+    font-size: 42px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    margin: 0 0 12px;
+    font:
+      600 clamp(24px, 3vw, 38px)/1.05 "Space Grotesk",
+      sans-serif;
+    letter-spacing: -0.05em;
+  }
+
+  p {
+    max-width: 280px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.hero__bottom,
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.section {
+  padding: 100px 7vw;
+}
+
+.section__label {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: $muted;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.about {
+  position: relative;
+  margin-top: 65px;
+  overflow: hidden;
+  border-radius: 90px 90px 0 0;
+  background:
+    radial-gradient(ellipse at 100% 10%, #24121f 0%, transparent 38%), $surface;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 8vw;
+    padding: 90px 0 120px;
+  }
+
+  h2,
+  .work__heading h2,
+  .skills h2,
+  .footer h2 {
+    margin: 16px 0;
+    font:
+      600 clamp(42px, 6vw, 78px)/0.98 "Space Grotesk",
+      sans-serif;
+    letter-spacing: -0.075em;
+
+    span {
+      color: $pink;
+    }
+  }
+
+  &__text {
+    max-width: 420px;
+    padding-top: 22px;
+
+    p {
+      color: #d0c7c7;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: $pink;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  &__decoration {
+    position: absolute;
+    right: -10px;
+    bottom: -0.24em;
+    color: rgba(255, 57, 183, 0.055);
+    font:
+      700 clamp(100px, 19vw, 260px)/1 "Space Grotesk",
+      sans-serif;
+    letter-spacing: -0.1em;
+    pointer-events: none;
+  }
+}
+
+.work {
+  background: $bg;
+
+  &__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 75px 0 45px;
+
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      max-width: 220px;
+      color: $muted;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  }
+
+  &__note {
+    color: $muted;
+    font-size: 11px;
+  }
+}
+
+.project {
+  margin-bottom: 55px;
+
+  &__visual {
+    position: relative;
+    min-height: clamp(240px, 45vw, 530px);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    isolation: isolate;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border-radius: 50%;
+      transition: transform 0.5s;
+    }
+
+    &::before {
+      width: 65%;
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, 0.12);
+      filter: blur(2px);
+    }
+
+    &::after {
+      width: 42%;
+      aspect-ratio: 1;
+      background: rgba(15, 10, 20, 0.22);
+      transform: translate(20%, 20%);
+    }
+
+    &:hover::before {
+      transform: rotate(15deg) scale(1.1);
+    }
+  }
+
+  &--one .project__visual {
+    background:
+      radial-gradient(ellipse at 70% 25%, #ffbd64 0%, transparent 30%),
+      linear-gradient(125deg, #fc4c95, #8b116c 65%, #37113c);
+  }
+
+  &--two .project__visual {
+    background:
+      radial-gradient(ellipse at 25% 20%, #ffcc9b 0%, transparent 28%),
+      linear-gradient(125deg, #f05b34, #b6203d 55%, #44102e);
+  }
+
+  &__number,
+  &__caption {
+    position: absolute;
+    left: 24px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  &__number {
+    top: 24px;
+  }
+
+  &__caption {
+    bottom: 24px;
+  }
+
+  &__symbol {
+    font:
+      700 clamp(100px, 23vw, 270px)/1 "Space Grotesk",
+      sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s;
+  }
+
+  &:hover &__symbol {
+    transform: rotate(-8deg) scale(1.06);
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 4px;
+
+    h3 {
+      margin: 0 0 8px;
+      font:
+        600 clamp(21px, 3vw, 32px) "Space Grotesk",
+        sans-serif;
+    }
+
+    p {
+      margin: 0;
+      color: $muted;
+      font-size: 12px;
+    }
+  }
+
+  &__arrow {
+    font-size: 26px;
+    color: $pink;
+  }
+}
+
+.skills {
+  background: $surface;
+
+  h2 {
+    margin: 75px 0;
+    font:
+      600 clamp(42px, 6vw, 78px)/0.98 "Space Grotesk",
+      sans-serif;
+
+    span {
+      color: $pink;
+    }
+  }
+
+  &__list {
+    border-top: 1px solid #393131;
+  }
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 55px 1fr 30px;
+  gap: 20px;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid #393131;
+  transition:
+    color 0.2s,
+    padding 0.2s;
+
+  &:hover {
+    padding-left: 10px;
+    color: $pink;
+  }
+
+  span:first-child {
+    color: $muted;
+    font-size: 10px;
+  }
+
+  span:nth-child(2) {
+    font:
+      500 clamp(20px, 3vw, 32px) "Space Grotesk",
+      sans-serif;
+  }
+
+  span:last-child {
+    text-align: right;
+  }
+}
+
+.footer {
+  padding: 110px 7vw 25px;
+  background:
+    radial-gradient(ellipse at 85% 20%, #6c003e 0%, transparent 35%),
+    linear-gradient(120deg, #24101d, #111010 70%);
+
+  h2 {
+    margin: 35px 0;
+    font:
+      600 clamp(48px, 9vw, 115px)/0.98 "Space Grotesk",
+      sans-serif;
+    letter-spacing: -0.075em;
+
+    span {
+      color: $pink;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    margin: 15px 0 100px;
+    padding: 16px 24px;
+    border-radius: 100px;
+    background: $pink;
+    color: #160b12;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  &__bottom {
+    padding-top: 22px;
+    border-top: 1px solid #393131;
+    color: $muted;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 700px;
+    min-height: 92svh;
+    border-radius: 0 0 48px 48px;
+    padding: 22px 6vw;
+  }
+
+  .nav {
+    gap: 12px;
+
+    &__links {
+      gap: 12px;
+
+      a {
+        font-size: 9px;
+      }
+    }
+
+    &__contact {
+      padding: 10px 12px;
+      font-size: 10px;
+    }
+  }
+
+  .hero__content {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 55px 0;
+  }
+
+  .hero__intro h1 {
+    font-size: clamp(80px, 22vw, 135px);
+  }
+
+  .hero__statement {
+    justify-self: start;
+
+    h3 {
+      font-size: 29px;
+    }
+  }
+
+  .hero__bottom {
+    font-size: 8px;
+  }
+
+  .section {
+    padding: 70px 6vw;
+  }
+
+  .section__label {
+    font-size: 8px;
+  }
+
+  .about {
+    margin-top: 45px;
+    border-radius: 48px 48px 0 0;
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 60px 0 100px;
+    }
+
+    h2 {
+      font-size: clamp(43px, 11vw, 65px);
+    }
+
+    &__text {
+      padding-top: 0;
+    }
+  }
+
+  .work__heading {
+    align-items: start;
+    flex-direction: column;
+    margin: 55px 0 35px;
+  }
+
+  .project {
+    margin-bottom: 35px;
+
+    &__visual {
+      min-height: 270px;
+      border-radius: 16px;
+    }
+
+    &__info {
+      align-items: start;
+
+      h3 {
+        font-size: 21px;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .skills h2 {
+    margin: 55px 0;
+  }
+
+  .skill {
+    grid-template-columns: 30px 1fr 20px;
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .footer {
+    padding: 75px 6vw 22px;
+
+    &__button {
+      margin-bottom: 70px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
