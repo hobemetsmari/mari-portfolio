@@ -7,21 +7,38 @@ import Vision from "./components/vision/Vision";
 import Footer from "./components/footer/Footer";
 import { ProjectsSection } from "./components/projects/projectsSection";
 import { ExtrasSection } from "./components/extra/extraSection";
+import { Reveal } from "./components/Reveal";
 
 function App() {
   return (
     <>
       <Hero />
       <main>
-        <QuickFacts />
-        <About />
-        <Experience />
-        <ProjectsSection />
-        <TechStack />
-        <ExtrasSection />
-        <Vision />
+        <Reveal>
+          <QuickFacts />
+        </Reveal>
+        <Reveal>
+          <About />
+        </Reveal>
+        <Reveal>
+          <Experience />
+        </Reveal>
+        <Reveal>
+          <ProjectsSection />
+        </Reveal>
+        <Reveal>
+          <TechStack />
+        </Reveal>
+        <Reveal>
+          <ExtrasSection />
+        </Reveal>
+        <Reveal>
+          <Vision />
+        </Reveal>
       </main>
-      <Footer />
+      <Reveal>
+        <Footer />
+      </Reveal>
     </>
   );
 }

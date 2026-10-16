@@ -1,106 +1,75 @@
-import { Box, Button, Typography } from "@mui/material";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { useState } from "react";
+import { Box, GlobalStyles, Portal } from "@mui/material";
 import { colors } from "../../theme/color";
-
-const navigationItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Vision", href: "#vision" },
-];
+import TopbarContactButton from "./TopBarContactButton";
+import TopbarLinks from "./topBarLinks";
+import TopbarMobileMenu from "./TopBarMobileMneu";
+import { useScrolled } from "./useScrolled";
+import { NAV_HEIGHT } from "./NavigationItems";
 
 const TopbarMenu = () => {
-  return (
-    <Box
-      component="nav"
-      aria-label="Main navigation"
-      sx={{
-        position: "relative",
-        zIndex: 10,
-        width: "100%",
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        px: { xs: 2.5, md: "4.5%" },
-        py: 2.5,
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          gap: { xs: 1.5, md: 3.5 },
-        }}
-      >
-        {navigationItems.map((item) => (
-          <Typography
-            key={item.href}
-            component="a"
-            href={item.href}
-            sx={{
-              color: "#fff",
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-              transition: "opacity 0.2s ease",
-              "&:hover": {
-                opacity: 0.65,
-              },
-            }}
-          >
-            {item.label}
-          </Typography>
-        ))}
+  const scrolled = useScrolled();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const filled = scrolled || menuOpen;
 
-        <Button
-          component="a"
-          href="#contact"
-          endIcon={
-            <Box
-              sx={{
-                display: "grid",
-                placeItems: "center",
-                width: 24,
-                height: 24,
-                borderRadius: "50%",
-                bgcolor: colors.magenta,
-                color: "#fff",
-              }}
-            >
-              <ArrowOutwardIcon sx={{ fontSize: 15 }} />
-            </Box>
-          }
+  return (
+    <>
+      <GlobalStyles
+        styles={{
+          html: {
+            scrollPaddingTop: NAV_HEIGHT + 12,
+            scrollBehavior: "smooth",
+          },
+          "@media (prefers-reduced-motion: reduce)": {
+            html: { scrollBehavior: "auto" },
+          },
+        }}
+      />
+
+      <Box aria-hidden sx={{ height: NAV_HEIGHT, flexShrink: 0 }} />
+
+      <Portal>
+        <Box
+          component="header"
           sx={{
-            px: 1,
-            pl: 2,
-            py: 0.5,
-            borderRadius: "999px",
-            bgcolor: "#fff",
-            color: "#171010",
-            fontSize: 11,
-            fontWeight: 700,
-            whiteSpace: "nowrap",
-            transition: "transform 0.2s, box-shadow 0.2s",
-            "&:hover": {
-              bgcolor: "#fff",
-              transform: "translateY(-1px)",
-              boxShadow: "0 10px 28px rgba(60, 0, 20, 0.35)",
-            },
-            "& .MuiButton-endIcon": {
-              ml: 1.5,
-            },
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1100,
+            pt: "env(safe-area-inset-top, 0px)",
+            backgroundColor: filled ? "rgba(20, 17, 26, 0.78)" : "transparent",
+            backdropFilter: filled ? "blur(14px)" : "none",
+            borderBottom: `1px solid ${scrolled ? colors.border : "transparent"}`,
+            transition: "background-color 0.25s ease, border-color 0.25s ease",
           }}
         >
-          Get in touch
-        </Button>
-      </Box>
-    </Box>
+          <Box
+            component="nav"
+            aria-label="Main navigation"
+            sx={{
+              position: "relative",
+              maxWidth: 1440,
+              mx: "auto",
+              height: NAV_HEIGHT,
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              gap: { xs: 1.5, md: 3.5 },
+              px: { xs: 2.5, md: "4.5%" },
+            }}
+          >
+            <TopbarLinks />
+            <TopbarContactButton />
+            <TopbarMobileMenu
+              open={menuOpen}
+              onToggle={() => setMenuOpen((open) => !open)}
+              onClose={() => setMenuOpen(false)}
+            />
+          </Box>
+        </Box>
+      </Portal>
+    </>
   );
 };
 
